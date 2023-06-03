@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Validación en evento blur y focus con 3 campos de entrada</title>
+</head>
+
+<body>
+    <h1> Si metes la pata, lanza error al salir. Si retomas el foco, se aclara el error</h1>
+    <h2>blur y focus</h2>
+    <input type="text" id="nombre" placeholder="Nombre">
+    <span id="errorNombre" style="color: red;"></span>
+    <br>
+    <input type="text" id="apellido" placeholder="Apellido">
+    <span id="errorApellido" style="color: red;"></span>
+    <br>
+    <input type="text" id="email" placeholder="Email">
+    <span id="errorEmail" style="color: red;"></span>
+
+    <script>
+        // Obtenemos los elementos de entrada y los mensajes de error
+        const nombre = document.getElementById('nombre');
+        const apellido = document.getElementById('apellido');
+        const email = document.getElementById('email');
+
+        const errorNombre = document.getElementById('errorNombre');
+        const errorApellido = document.getElementById('errorApellido');
+        const errorEmail = document.getElementById('errorEmail');
+
+        // Función de validación para el campo 1
+        function validarNombre() {
+            const valor = nombre.value;
+
+            if (valor.length < 3) {
+                errorNombre.textContent = 'El Nombre debe tener al menos 3 caracteres';
+            } else {
+                errorNombre.textContent = '';
+            }
+        }
+
+        // Función de validación para el campo 2
+        function validarApellido() {
+            const valor = apellido.value;
+
+            if (valor.length < 3) {
+                errorApellido.textContent = 'El Apellido debe tener al menos 3 caracteres';
+            } else {
+                errorApellido.textContent = '';
+            }
+        }
+
+        // Función de validación para el campo 3
+        function validarEmail() {
+            const valor = email.value;
+
+            if (valor.length < 3) {
+                errorEmail.textContent = 'El campo debe tener al menos 3 caracteres';
+            } else {
+                errorEmail.textContent = '';
+            }
+        }
+        function ocultarErrorNombre() {
+            errorNombre.textContent = '';
+        }
+        function ocultarErrorApellido() {
+            errorApellido.textContent = '';
+        }
+        function ocultarErrorEmail() {
+            errorEmail.textContent = '';
+        }
+
+        // Asociamos el evento blur a cada campo de entrada
+        nombre.addEventListener('blur', validarNombre);
+        nombre.addEventListener('focus', ocultarErrorNombre);
+
+        apellido.addEventListener('blur', validarApellido);
+        apellido.addEventListener('focus', ocultarErrorApellido);
+
+        email.addEventListener('blur', validarEmail);
+        email.addEventListener('focus', ocultarErrorEmail);
+    </script>
+</body>
+
+</html>
