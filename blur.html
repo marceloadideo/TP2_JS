@@ -14,7 +14,7 @@
     <input type="text" id="apellido" placeholder="Apellido">
     <span id="errorApellido" style="color: red;"></span>
     <br>
-    <input type="text" id="email" placeholder="Email">
+    <input type="email" id="email" placeholder="Email">
     <span id="errorEmail" style="color: red;"></span>
 
     <script>
@@ -51,12 +51,14 @@
 
         // Función de validación para el campo 3
         function validarEmail() {
-            const valor = email.value;
+            let valor = email.value;
+            emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+            //Se muestra un texto a modo de ejemplo, luego va a ser un icono
 
-            if (valor.length < 3) {
-                errorEmail.textContent = 'El campo debe tener al menos 3 caracteres';
-            } else {
+            if (emailRegex.test(valor))  {
                 errorEmail.textContent = '';
+            } else {
+                errorEmail.textContent = 'Complete bien el Email!';
             }
         }
         function ocultarErrorNombre() {
