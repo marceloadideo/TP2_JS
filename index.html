@@ -15,7 +15,13 @@
       var sCiudad = document.getElementById('ciudad').value; 
       //Verificamos si el usuario ingreso un valor
       if (sCiudad != null) {
-        alert("Tu ciudad es " + sCiudad);
+        alert("Apellido y Nombre: " + document.getElementById('apellidoYNombre').value+"\n"
+        + "DNI: " + document.getElementById('dni').value +"\n" 
+        + "Edad: " + document.getElementById('edad').value +"\n" 
+        + "Dirección: " + document.getElementById('direccion').value +"\n" 
+
+        + "Tu ciudad es: " + sCiudad +"\n" 
+            +". " );
       }
       //Verificamos si el usuario NO ingreso un valor
       else {
