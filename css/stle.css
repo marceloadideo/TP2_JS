@@ -1,0 +1,30 @@
+header {
+    padding: 5px;
+    display: flex;
+}
+.header {
+    display: flex;
+    text-align: center;
+    background-color: #4976ff;
+    font-family: Arial;
+    color: beige;
+
+
+}
+
+footer {
+    padding: 10px;
+    clear: both;
+    display: flex;
+    font-family: Arial;
+    text-align: center;
+    display: flex;
+    background-color: #4989ff;
+    color: beige;
+    
+}
+
+.footerText {
+    text-align: center;
+    display: flex;
+}

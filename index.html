@@ -8,20 +8,21 @@
   <title>TP 2 JS</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="css\stle.css">
   <script>
     function PromptDemo() {
       //Ingresamos una pregunta
-      var sCiudad = document.getElementById('ciudad').value; 
+      var sCiudad = document.getElementById('ciudad').value;
       //Verificamos si el usuario ingreso un valor
       if (sCiudad != null) {
-        alert("Apellido y Nombre: " + document.getElementById('apellidoYNombre').value+"\n"
-        + "DNI: " + document.getElementById('dni').value +"\n" 
-        + "Edad: " + document.getElementById('edad').value +"\n" 
-        + "Dirección: " + document.getElementById('direccion').value +"\n" 
+        alert("Apellido y Nombre: " + document.getElementById('apellidoYNombre').value + "\n"
+          + "DNI: " + document.getElementById('dni').value + "\n"
+          + "Edad: " + document.getElementById('edad').value + "\n"
+          + "Dirección: " + document.getElementById('direccion').value + "\n"
+          + "Código postal: " + document.getElementById('validationCodigoPostal').value + "\n"
 
-        + "Tu ciudad es: " + sCiudad +"\n" 
-            +". " );
+          + "Tu ciudad es: " + sCiudad + "\n"
+          + ". ");
       }
       //Verificamos si el usuario NO ingreso un valor
       else {
@@ -29,27 +30,30 @@
       }
     }
   </script>
+
 </head>
 
 <body>
 
+  <header class="header">
+    <h2 style="flex-grow: 2; flex-shrink: 2; flex-basis: 0;">Práctica de JS para validaciones específicas</h2>
+  </header>
+  <br>
+
   <div class="container">
-    <h1>
-      Formulario de Inscripción
-    </h1>
-    <h2>
-      Práctica de JS para validaciones específicas
-    </h2>
-    <h3>
-      Arquitectura y diseño WEB
-    </h3>
+
     <form class="row g-3">
 
+      <div class="content-center">
+        <h1 className="text-center">
+          Formulario de Inscripción
+        </h1>
 
+      </div>
 
       <div class="col-md-4">
         <label for="Apellido y Nombre" class="form-label">Apellido y Nombre separado por una coma</label>
-        <input type="text" class="form-control" id="apellidoYNombre" placeholder="Apellido y Nombre">
+        <input type="text" class="form-control" id="apellidoYNombre" required placeholder="Apellido y Nombre">
         <span id="errorApellidoYNombre" style="color: red;"></span>
         <div class="valid-feedback">
           <span id="errorApellidoYNombre" style="color: red;"></span>
@@ -58,7 +62,7 @@
 
       <div class="col-md-2">
         <label for="DNI" class="form-label">DNI</label>
-        <input type="text" class="form-control" id="dni" placeholder="DNI">
+        <input type="text" class="form-control" id="dni" required placeholder="DNI">
         <span id="errorDni" style="color: red;"></span>
         <div class="valid-feedback">
           <span id="errorDni" style="color: red;"></span>
@@ -154,13 +158,14 @@
       </div>
 
       <div class="col-12">
-        <input type="button" onclick="PromptDemo();" value="Verificar"/>
-        <!-- <button class="btn btn-primary" type="submit">Enviar formulario</button> -->
+        <!--<input type="button" onclick="PromptDemo();" value="Verificar"/> -->
+        <button class="btn btn-primary" onclick="PromptDemo();" type="submit">Enviar formulario</button>
       </div>
 
     </form>
 
   </div>
+  <br>
 
   <script>
     // Obtenemos los elementos de entrada y los mensajes de error
@@ -289,32 +294,34 @@
 
       const valor = contrasena.value;
 
-      if (valor.length < 3) {
-        errorContrasena.textContent = 'La Contraseña debe tener mas de 3 caracteres';
+      if (valor.length < 8) {
+        errorContrasena.textContent = 'La Contraseña debe tener 8 o más caracteres';
       } else {
         errorContrasena.textContent = '';
       }
-      if (valor.includes('@')) {
-        errorContrasena.textContent = '';
-      } else {
-        errorContrasena.textContent = 'Falta la arroba';
-      }
+      
     } //validarContrasena
 
     function validarRepetirContrasena() {
 
       const valor = repetircontrasena.value;
+      const valorContrasena = contrasena.value;
 
-      if (valor.length < 3) {
-        errorRepetirContrasena.textContent = 'La Contraseña debe tener mas de 3 caracteres';
-      } else {
+      if (valor == valorContrasena ){
+        errorRepetirContrasena.textContent = 'La Contraseñas no son iguales';
+      }
+
+      if (valor.length < 8) {
+        errorRepetirContrasena.textContent = 'La Contraseña debe tener 8 o más caracteres';
+      }
+      
+      if (valor.length >= 8 && valor==valorContrasena ) {
         errorRepetirContrasena.textContent = '';
       }
-      if (valor.includes('@')) {
-        errorRepetirContrasena.textContent = '';
-      } else {
-        errorRepetirContrasena.textContent = 'Falta la arroba';
+      else {
+        errorRepetirContrasena.textContent = 'las contraseñas no coinciden';
       }
+      
     } //validarContrasena
 
 
@@ -399,7 +406,7 @@
 <div id="footer" class="container">
   <footer>
     <span>
-      Arquitectura y diseño WEB
+      Materia: Arquitectura y diseño WEB (2023)         Alumno: Marcelo A. Di Deo
     </span>
   </footer>
 </div>
