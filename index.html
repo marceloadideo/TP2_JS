@@ -6,109 +6,195 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TP 2 JS</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
 
+  <div class="container">
+    <h1>
+      Formulario de Inscripción
+    </h1>
+    <h2>
+      Práctica de JS para validaciones específicas
+    </h2>
+    <h3>
+      Arquitectura y diseño WEB
+    </h3>
+    <form class="row g-3">
 
-  <form class="row g-3">
+      
 
-    <div class="col-md-4">
-      <label for="Apellido y Nombre" class="form-label">Apellido y Nombre separado por una coma</label>
-      <input type="text" class="form-control" id="apellidoYNombre" placeholder="Apellido y Nombre">
-      <span id="errorApellidoYNombre" style="color: red;"></span>
-      <div class="valid-feedback">
+      <div class="col-md-4">
+        <label for="Apellido y Nombre" class="form-label">Apellido y Nombre separado por una coma</label>
+        <input type="text" class="form-control" id="apellidoYNombre" placeholder="Apellido y Nombre">
         <span id="errorApellidoYNombre" style="color: red;"></span>
-      </div>
-    </div>
-
-
-    <div class="col-md-4">
-      <label for="validationCustom02" class="form-label">Apellido</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-      <div class="valid-feedback">
-        ¡Campo validado!
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustomUsername" class="form-label">Nombre de usuario</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-          required>
-        <div class="invalid-feedback">
-          Por favor, elije un apellidoYNombre de usuario.
+        <div class="valid-feedback">
+          <span id="errorApellidoYNombre" style="color: red;"></span>
         </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <label for="validationCustom03" class="form-label">Ciudad</label>
-      <input type="text" class="form-control" id="validationCustom03" required>
-      <div class="invalid-feedback">
-        No ingresó la ciudad donde vive.
-      </div>
-    </div>
-    <div class="col-md-3">
-      <label for="validationCustom04" class="form-label">Estado</label>
-      <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">Elige...</option>
-        <option>...</option>
-      </select>
-      <div class="invalid-feedback">
-        Selecciona un estado válido.
-      </div>
-    </div>
-    <div class="col-md-3">
-      <label for="validationCustom05" class="form-label">Código postal</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
-      <div class="invalid-feedback">
-        Proporciona un código postal válido.
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Acepta los términos y condiciones
-        </label>
-        <div class="invalid-feedback">
-          Debe estar de acuerdo antes de enviar.
+
+      <div class="col-md-2">
+        <label for="DNI" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="dni" placeholder="DNI">
+        <span id="errorDni" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorDni" style="color: red;"></span>
         </div>
       </div>
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Enviar formulario</button>
-    </div>
-  </form>
+
+
+      <div class="col-md-1">
+        <label for="Edad" class="form-label">Edad</label>
+        <input type="text" class="form-control" id="edad" placeholder="Edad">
+        <span id="errorEdad" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorEdad" style="color: red;"></span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="Dirección" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direccion" placeholder="Direccion">
+        <span id="errorDireccion" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorDireccion" style="color: red;"></span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="validationCodigoPostal" class="form-label">Codigo Postal</label>
+        <select class="form-select" id="validationCodigoPostal" required>
+          <option selected disabled value="">Elija Cod. Postal...</option>
+          <option>(1642) San Isidro </option>
+          <option>(1643) Beccar</option>
+        </select>
+        <div class="invalid-feedback">
+          Selecciona un código postal válido.
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="validationCustom03" class="form-label">Ciudad</label>
+        <input type="text" class="form-control" id="validationCustom03" required>
+        <div class="invalid-feedback">
+          No ingresó la ciudad donde vive.
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="validationCustom03" class="form-label">Telefono</label>
+        <input type="text" class="form-control" id="telefono" required>
+        <div class="invalid-feedback">
+          No ingresó la ciudad donde vive.
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" placeholder="Email">
+        <span id="errorEmail" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorEmail" style="color: red;"></span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="Contrasena" class="form-label">Contraseña</label>
+        <input type="text" class="form-control" id="contrasena" placeholder="Contraseña">
+        <span id="errorContrasena" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorContrasena" style="color: red;"></span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="Contrasena" class="form-label">Repetir Contraseña</label>
+        <input type="text" class="form-control" id="contrasena" placeholder="Repetir Contraseña">
+        <span id="errorContrasena" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorContrasena" style="color: red;"></span>
+        </div>
+      </div>
+
+
+
+
+      
+      
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <label class="form-check-label" for="invalidCheck">
+            Acepta los términos y condiciones
+          </label>
+          <div class="invalid-feedback">
+            Debe estar de acuerdo antes de enviar.
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Enviar formulario</button>
+      </div>
+  
+    </form>
+  
+  </div>
+
   <script>
     // Obtenemos los elementos de entrada y los mensajes de error
     const apellidoYNombre = document.getElementById('apellidoYNombre');
-    const apellido = document.getElementById('apellido');
-    const email = document.getElementById('email');
+    const contrasena      = document.getElementById('contrasena');
+    const apellido        = document.getElementById('apellido');
+    const email           = document.getElementById('email');
 
-    const errorApellidoYNombre = document.getElementById('errorApellidoYNombre');
-    const errorApellido = document.getElementById('errorApellido');
-    const errorEmail = document.getElementById('errorEmail');
+    const errorApellidoYNombre  = document.getElementById('errorApellidoYNombre');
+    const errorContrasena       = document.getElementById('errorContrasena');
+    const errorApellido         = document.getElementById('errorApellido');
+    const errorEmail            = document.getElementById('errorEmail');
 
     // Función de validación para el campo 1
     function validarApellidoYNombre() {
 
-      let valor = apellidoYNombre.value;
+      const valor = apellidoYNombre.value;
 
       if (valor.length < 3) {
         errorApellidoYNombre.textContent = 'El Nombre debe tener al menos 3 caracteres';
       } else {
         errorApellidoYNombre.textContent = '';
       }
-
       if (valor.includes(' ')) {
         errorApellidoYNombre.textContent = '';
       } else {
-        errorApellidoYNombre.textContent = 'Complete bien el Nombre! le falta un espacio';
+        errorApellidoYNombre.textContent = 'Me estas queriendo joder. No tiene espacios';
       }
+      if (valor.includes(',')) {
+        errorApellidoYNombre.textContent = '';
+      } else {
+        errorApellidoYNombre.textContent = 'Falta la coma que separe el apellido y el nombre';
+      }
+    } //validarApellidoYNombre
 
-    }
+    function validarContrasena() {
+
+      const valor = contrasena.value;
+
+      if (valor.length < 3) {
+        errorContrasena.textContent = 'La Contraseña debe tener mas de 3 caracteres';
+      } else {
+        errorContrasena.textContent = '';
+      }
+      if (valor.includes('@')) {
+        errorContrasena.textContent = '';
+      } else {
+        errorContrasena.textContent = 'Falta la arroba';
+      }
+    } //validarContrasena
+
+
 
     // Función de validación para el campo 2
     function validarApellido() {
@@ -125,19 +211,14 @@
     function validarEmail() {
       let valor = email.value;
       emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-      //Se muestra un texto a modo de ejemplo, luego va a ser un icono
-
       if (emailRegex.test(valor)) {
         errorEmail.textContent = '';
 
       } else {
         errorEmail.textContent = 'Complete bien el Email!';
       }
+    } //validarEmail
 
-
-
-
-    }
     function ocultarErrorNombre() {
       errorApellidoYNombre.textContent = '';
     }
@@ -147,8 +228,11 @@
     function ocultarErrorEmail() {
       errorEmail.textContent = '';
     }
+    function ocultarErrorContrasena() {
+      errorContrasena.textContent = '';
+    }
 
-    // Asociamos el evento blur a cada campo de entrada
+    // Asociamos el evento blur y focus a cada campo del form
     apellidoYNombre.addEventListener('blur', validarApellidoYNombre);
     apellidoYNombre.addEventListener('focus', ocultarErrorNombre);
 
@@ -157,6 +241,11 @@
 
     email.addEventListener('blur', validarEmail);
     email.addEventListener('focus', ocultarErrorEmail);
+
+    contrasena.addEventListener('blur', validarContrasena);
+    contrasena.addEventListener('focus', ocultarErrorContrasena);
+
+
   </script>
 </body>
 
