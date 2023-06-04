@@ -20,11 +20,12 @@
     <script>
         // Obtenemos los elementos de entrada y los mensajes de error
         const nombre = document.getElementById('nombre');
-        const apellido = document.getElementById('apellido');
-        const email = document.getElementById('email');
-
         const errorNombre = document.getElementById('errorNombre');
+
+        const apellido = document.getElementById('apellido');
         const errorApellido = document.getElementById('errorApellido');
+
+        const email = document.getElementById('email');
         const errorEmail = document.getElementById('errorEmail');
 
         // Función de validación para el campo 1
@@ -41,7 +42,6 @@
             }else {
                 errorNombre.textContent = 'Complete bien el Nombre! le falta un espacio';
             }
-
         }
 
         // Función de validación para el campo 2

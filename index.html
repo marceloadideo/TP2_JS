@@ -24,7 +24,7 @@
     </h3>
     <form class="row g-3">
 
-      
+
 
       <div class="col-md-4">
         <label for="Apellido y Nombre" class="form-label">Apellido y Nombre separado por una coma</label>
@@ -91,7 +91,6 @@
         </div>
       </div>
 
-
       <div class="col-md-4">
         <label for="Email" class="form-label">Email</label>
         <input type="text" class="form-control" id="email" placeholder="Email">
@@ -119,11 +118,6 @@
         </div>
       </div>
 
-
-
-
-      
-      
       <div class="col-12">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -135,26 +129,32 @@
           </div>
         </div>
       </div>
-  
+
       <div class="col-12">
         <button class="btn btn-primary" type="submit">Enviar formulario</button>
       </div>
-  
+
     </form>
-  
+
   </div>
 
   <script>
     // Obtenemos los elementos de entrada y los mensajes de error
     const apellidoYNombre = document.getElementById('apellidoYNombre');
-    const contrasena      = document.getElementById('contrasena');
-    const apellido        = document.getElementById('apellido');
-    const email           = document.getElementById('email');
+    const errorApellidoYNombre = document.getElementById('errorApellidoYNombre');
 
-    const errorApellidoYNombre  = document.getElementById('errorApellidoYNombre');
-    const errorContrasena       = document.getElementById('errorContrasena');
-    const errorApellido         = document.getElementById('errorApellido');
-    const errorEmail            = document.getElementById('errorEmail');
+    const contrasena = document.getElementById('contrasena');
+    const errorContrasena = document.getElementById('errorContrasena');
+
+    const apellido = document.getElementById('apellido');
+    const errorApellido = document.getElementById('errorApellido');
+
+    const email = document.getElementById('email');
+    const errorEmail = document.getElementById('errorEmail');
+
+    const dni = document.getElementById('dni');
+    const errorDni = document.getElementById('errorDni');
+
 
     // Función de validación para el campo 1
     function validarApellidoYNombre() {
@@ -177,6 +177,18 @@
         errorApellidoYNombre.textContent = 'Falta la coma que separe el apellido y el nombre';
       }
     } //validarApellidoYNombre
+
+    function validarDni() {
+
+      const valor = dni.value;
+
+      if (valor.length < 3) {
+        errorDni.textContent = 'DNI Erroneo';
+      } else {
+        errorDni.textContent = '';
+      }
+
+    } //validarContrasena
 
     function validarContrasena() {
 
@@ -225,6 +237,12 @@
     function ocultarErrorApellido() {
       errorApellido.textContent = '';
     }
+    
+    function ocultarErrorDni() {
+      errorDni.textContent = '';
+    }
+    
+    
     function ocultarErrorEmail() {
       errorEmail.textContent = '';
     }
@@ -232,18 +250,19 @@
       errorContrasena.textContent = '';
     }
 
-    // Asociamos el evento blur y focus a cada campo del form
     apellidoYNombre.addEventListener('blur', validarApellidoYNombre);
     apellidoYNombre.addEventListener('focus', ocultarErrorNombre);
 
-    apellido.addEventListener('blur', validarApellido);
-    apellido.addEventListener('focus', ocultarErrorApellido);
+    
 
     email.addEventListener('blur', validarEmail);
     email.addEventListener('focus', ocultarErrorEmail);
 
     contrasena.addEventListener('blur', validarContrasena);
     contrasena.addEventListener('focus', ocultarErrorContrasena);
+
+    dni.addEventListener('blur', validarDni);
+    dni.addEventListener('focus', ocultarErrorDni);
 
 
   </script>
