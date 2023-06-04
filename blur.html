@@ -29,13 +29,19 @@
 
         // Función de validación para el campo 1
         function validarNombre() {
-            const valor = nombre.value;
+            let valor = nombre.value;
 
             if (valor.length < 3) {
                 errorNombre.textContent = 'El Nombre debe tener al menos 3 caracteres';
             } else {
                 errorNombre.textContent = '';
             }
+            if  (valor.includes(' ') ){
+                errorNombre.textContent = '';
+            }else {
+                errorNombre.textContent = 'Complete bien el Nombre! le falta un espacio';
+            }
+
         }
 
         // Función de validación para el campo 2
@@ -57,9 +63,14 @@
 
             if (emailRegex.test(valor))  {
                 errorEmail.textContent = '';
+                
             } else {
                 errorEmail.textContent = 'Complete bien el Email!';
             }
+
+
+
+
         }
         function ocultarErrorNombre() {
             errorNombre.textContent = '';

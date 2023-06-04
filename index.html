@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>  
+<head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TP 2 JS</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/stle.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
 
 
-  <form class="row g-3 needs-validation" novalidate>
+  <form class="row g-3">
+
     <div class="col-md-4">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombre" value="" required>
+      <label for="Apellido y Nombre" class="form-label">Apellido y Nombre separado por una coma</label>
+      <input type="text" class="form-control" id="apellidoYNombre" placeholder="Apellido y Nombre">
+      <span id="errorApellidoYNombre" style="color: red;"></span>
       <div class="valid-feedback">
-        ¡Campo validado!
+        <span id="errorApellidoYNombre" style="color: red;"></span>
       </div>
     </div>
+
+
     <div class="col-md-4">
       <label for="validationCustom02" class="form-label">Apellido</label>
       <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
@@ -36,7 +38,7 @@
         <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
           required>
         <div class="invalid-feedback">
-          Por favor, elije un nombre de usuario.
+          Por favor, elije un apellidoYNombre de usuario.
         </div>
       </div>
     </div>
@@ -79,27 +81,85 @@
       <button class="btn btn-primary" type="submit">Enviar formulario</button>
     </div>
   </form>
+  <script>
+    // Obtenemos los elementos de entrada y los mensajes de error
+    const apellidoYNombre = document.getElementById('apellidoYNombre');
+    const apellido = document.getElementById('apellido');
+    const email = document.getElementById('email');
 
+    const errorApellidoYNombre = document.getElementById('errorApellidoYNombre');
+    const errorApellido = document.getElementById('errorApellido');
+    const errorEmail = document.getElementById('errorEmail');
+
+    // Función de validación para el campo 1
+    function validarApellidoYNombre() {
+
+      let valor = apellidoYNombre.value;
+
+      if (valor.length < 3) {
+        errorApellidoYNombre.textContent = 'El Nombre debe tener al menos 3 caracteres';
+      } else {
+        errorApellidoYNombre.textContent = '';
+      }
+
+      if (valor.includes(' ')) {
+        errorApellidoYNombre.textContent = '';
+      } else {
+        errorApellidoYNombre.textContent = 'Complete bien el Nombre! le falta un espacio';
+      }
+
+    }
+
+    // Función de validación para el campo 2
+    function validarApellido() {
+      const valor = apellido.value;
+
+      if (valor.length < 3) {
+        errorApellido.textContent = 'El Apellido debe tener al menos 3 caracteres';
+      } else {
+        errorApellido.textContent = '';
+      }
+    }
+
+    // Función de validación para el campo 3
+    function validarEmail() {
+      let valor = email.value;
+      emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+      //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+
+      if (emailRegex.test(valor)) {
+        errorEmail.textContent = '';
+
+      } else {
+        errorEmail.textContent = 'Complete bien el Email!';
+      }
+
+
+
+
+    }
+    function ocultarErrorNombre() {
+      errorApellidoYNombre.textContent = '';
+    }
+    function ocultarErrorApellido() {
+      errorApellido.textContent = '';
+    }
+    function ocultarErrorEmail() {
+      errorEmail.textContent = '';
+    }
+
+    // Asociamos el evento blur a cada campo de entrada
+    apellidoYNombre.addEventListener('blur', validarApellidoYNombre);
+    apellidoYNombre.addEventListener('focus', ocultarErrorNombre);
+
+    apellido.addEventListener('blur', validarApellido);
+    apellido.addEventListener('focus', ocultarErrorApellido);
+
+    email.addEventListener('blur', validarEmail);
+    email.addEventListener('focus', ocultarErrorEmail);
+  </script>
 </body>
 
-<script>
 
-
-function validate() {
-    if (getId('nombre').value.length < 5) {
-        console.log('validación incorrecta');
-        return false;
-    }
-    if (getId('segundo').value.length > 35) {
-        console.log('validación incorrecta');
-        return false;
-    }
-
-    console.log('todo perfecto');
-    // Aquí puedes añadir la acción que requieras
-    return true;
-    getId('nombre').addEventListener('blur', validate);
-}
-</script>
 
 </html>
