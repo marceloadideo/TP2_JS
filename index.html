@@ -11,20 +11,16 @@
   <link rel="stylesheet" href="css\stle.css">
   <script>
     function PromptDemo() {
-      //Ingresamos una pregunta
-      var sCiudad = document.getElementById('ciudad').value;
-      //Verificamos si el usuario ingreso un valor
+      var sCiudad=document.getElementById('ciudad').value;
       if (sCiudad != null) {
         alert("Apellido y Nombre: " + document.getElementById('apellidoYNombre').value + "\n"
           + "DNI: " + document.getElementById('dni').value + "\n"
           + "Edad: " + document.getElementById('edad').value + "\n"
           + "Dirección: " + document.getElementById('direccion').value + "\n"
           + "Código postal: " + document.getElementById('validationCodigoPostal').value + "\n"
-
-          + "Tu ciudad es: " + sCiudad + "\n"
+          + "Ciudad: " + document.getElementById('ciudad').value + "\n"
           + ". ");
       }
-      //Verificamos si el usuario NO ingreso un valor
       else {
         alert("Falta ingresar Ciudad");
       }
@@ -203,8 +199,8 @@
 
       const valor = apellidoYNombre.value;
 
-      if (valor.length < 3) {
-        errorApellidoYNombre.textContent = 'El Nombre debe tener al menos 3 caracteres';
+      if (valor.length < 7) {
+        errorApellidoYNombre.textContent = 'El Nombre debe tener al menos 7 caracteres';
       } else {
         errorApellidoYNombre.textContent = '';
       }
@@ -224,7 +220,7 @@
 
       const valor = dni.value;
 
-      if (valor.length < 3) {
+      if (valor.length < 7 || valor.length > 8 ) {
         errorDni.textContent = 'DNI Erroneo';
       } else {
         errorDni.textContent = '';
@@ -240,6 +236,11 @@
         errorDireccion.textContent = 'Direccion Errónea';
       } else {
         errorDireccion.textContent = '';
+      }
+      if (valor.includes(' ')) {
+        errorDireccion.textContent = '';
+      } else {
+        errorDireccion.textContent = 'Me estas queriendo joder. No tiene espacios';
       }
 
     } //validarDireccion
@@ -260,11 +261,15 @@
 
       const valor = telefono.value;
 
-      if (valor.length < 3) {
-        errorTelefono.textContent = 'Teléfono Erroneo';
+      
+      if (valor.includes(" ") || valor.includes("-") || valor.includes("(") || valor.includes(")") || valor.length < 7 ){
+        errorTelefono.textContent = 'Teléfono Erroneo.';
       } else {
         errorTelefono.textContent = '';
+
       }
+
+
 
     } //validarTelefono
 
