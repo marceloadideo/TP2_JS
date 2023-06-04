@@ -71,23 +71,25 @@
           <option>(1643) Beccar</option>
         </select>
         <div class="invalid-feedback">
-          Selecciona un código postal válido.
+          Seleccione un código postal válido.
         </div>
       </div>
 
       <div class="col-md-4">
         <label for="validationCustom03" class="form-label">Ciudad</label>
-        <input type="text" class="form-control" id="validationCustom03" required>
-        <div class="invalid-feedback">
-          No ingresó la ciudad donde vive.
+        <input type="text" class="form-control" id="ciudad" required>
+        <span id="errorCiudad" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorCiudad" style="color: red;"></span>
         </div>
       </div>
 
       <div class="col-md-3">
         <label for="validationCustom03" class="form-label">Telefono</label>
         <input type="text" class="form-control" id="telefono" required>
-        <div class="invalid-feedback">
-          No ingresó la ciudad donde vive.
+        <span id="errorTelefono" style="color: red;"></span>
+        <div class="valid-feedback">
+          <span id="errorTelefono" style="color: red;"></span>
         </div>
       </div>
 
@@ -156,11 +158,17 @@
     const repetirContrasena = document.getElementById('repetircontrasena');
     const errorRepetirContrasena = document.getElementById('errorRepetirContrasena');
 
-
-
     const email = document.getElementById('email');
     const errorEmail = document.getElementById('errorEmail');
 
+    const direccion = document.getElementById('direccion');
+    const errorDireccion = document.getElementById('errorDireccion');
+
+    const ciudad = document.getElementById('ciudad');
+    const errorCiudad = document.getElementById('errorCiudad');
+
+    const telefono = document.getElementById('telefono');
+    const errorTelefono = document.getElementById('errorTelefono');
 
 
     // Función de validación para el campo 1
@@ -195,7 +203,45 @@
         errorDni.textContent = '';
       }
 
-    } //validarContrasena
+    } //validarDni
+
+    function validarDireccion() {
+
+      const valor = direccion.value;
+
+      if (valor.length < 3) {
+        errorDireccion.textContent = 'Direccion Errónea';
+      } else {
+        errorDireccion.textContent = '';
+      }
+
+    } //validarDireccion
+
+    function validarCiudad() {
+
+      const valor = ciudad.value;
+
+      if (valor.length < 3) {
+        errorCiudad.textContent = 'Error conla ciudad';
+      } else {
+        errorCiudad.textContent = '';
+      }
+
+    } //validarCiudad
+
+    function validarTelefono() {
+
+      const valor = telefono.value;
+
+      if (valor.length < 3) {
+        errorTelefono.textContent = 'Teléfono Erroneo';
+      } else {
+        errorTelefono.textContent = '';
+      }
+
+    } //validarTelefono
+
+
 
     function validarEdad() {
 
@@ -278,6 +324,16 @@
     function ocultarErrorRepetirContrasena() {
       errorRepetirContrasena.textContent = '';
     }
+    function ocultarErrorDireccion() {
+      errorDireccion.textContent = '';
+    }
+    function ocultarErrorCiudad() {
+      errorCiudad.textContent = '';
+    }
+    function ocultarErrorTelefono() {
+      errorTelefono.textContent = '';
+    }
+
 
     apellidoYNombre.addEventListener('blur', validarApellidoYNombre);
     apellidoYNombre.addEventListener('focus', ocultarErrorApellidoYNombre);
@@ -298,11 +354,25 @@
     repetirContrasena.addEventListener('blur', validarRepetirContrasena);
     repetirContrasena.addEventListener('focus', ocultarErrorRepetirContrasena);
 
+    direccion.addEventListener('blur', validarDireccion);
+    direccion.addEventListener('focus', ocultarErrorDireccion);
+
+    ciudad.addEventListener('blur', validarCiudad);
+    ciudad.addEventListener('focus', ocultarErrorCiudad);
+
+    telefono.addEventListener('blur', validarTelefono);
+    telefono.addEventListener('focus', ocultarErrorTelefono);
 
 
   </script>
 </body>
 
-
+<div id="footer" class="container">
+  <footer>
+    <span>
+      Arquitectura y diseño WEB
+    </span>
+  </footer>
+</div>
 
 </html>
