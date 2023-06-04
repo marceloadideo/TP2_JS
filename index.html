@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css\stle.css">
   <script>
     function PromptDemo() {
-      var sCiudad=document.getElementById('ciudad').value;
+      var sCiudad = document.getElementById('ciudad').value;
       if (sCiudad != null) {
         alert("Apellido y Nombre: " + document.getElementById('apellidoYNombre').value + "\n"
           + "DNI: " + document.getElementById('dni').value + "\n"
@@ -220,7 +220,7 @@
 
       const valor = dni.value;
 
-      if (valor.length < 7 || valor.length > 8 ) {
+      if (valor.length < 7 || valor.length > 8) {
         errorDni.textContent = 'DNI Erroneo';
       } else {
         errorDni.textContent = '';
@@ -237,13 +237,35 @@
       } else {
         errorDireccion.textContent = '';
       }
+      
       if (valor.includes(' ')) {
         errorDireccion.textContent = '';
       } else {
         errorDireccion.textContent = 'Me estas queriendo joder. No tiene espacios';
       }
+      
+      if (contieneLetrasYNumeros(valor) ) {
+        if (valor.includes(' ')) {
+        errorDireccion.textContent = '';
+      } else {
+        errorDireccion.textContent = 'Me estas queriendo joder. No tiene espacios';
+      }
+      } else {
+        errorDireccion.textContent = 'Tiene que tener numeros y letras';
+      }
+
 
     } //validarDireccion
+
+
+    function contieneLetrasYNumeros(cadena) {
+      var contieneLetras = /[a-zA-Z]/.test(cadena);
+      var contieneNumeros = /\d/.test(cadena);
+
+      return contieneLetras && contieneNumeros;
+    }
+
+
 
     function validarCiudad() {
 
@@ -261,8 +283,8 @@
 
       const valor = telefono.value;
 
-      
-      if (valor.includes(" ") || valor.includes("-") || valor.includes("(") || valor.includes(")") || valor.length < 7 ){
+
+      if (valor.includes(" ") || valor.includes("-") || valor.includes("(") || valor.includes(")") || valor.length < 7) {
         errorTelefono.textContent = 'Teléfono Erroneo.';
       } else {
         errorTelefono.textContent = '';
@@ -304,7 +326,7 @@
       } else {
         errorContrasena.textContent = '';
       }
-      
+
     } //validarContrasena
 
     function validarRepetirContrasena() {
@@ -312,21 +334,21 @@
       const valor = repetircontrasena.value;
       const valorContrasena = contrasena.value;
 
-      if (valor == valorContrasena ){
+      if (valor == valorContrasena) {
         errorRepetirContrasena.textContent = 'La Contraseñas no son iguales';
       }
 
       if (valor.length < 8) {
         errorRepetirContrasena.textContent = 'La Contraseña debe tener 8 o más caracteres';
       }
-      
-      if (valor.length >= 8 && valor==valorContrasena ) {
+
+      if (valor.length >= 8 && valor == valorContrasena) {
         errorRepetirContrasena.textContent = '';
       }
       else {
         errorRepetirContrasena.textContent = 'las contraseñas no coinciden';
       }
-      
+
     } //validarContrasena
 
 
@@ -411,7 +433,7 @@
 <div id="footer" class="container">
   <footer>
     <span>
-      Materia: Arquitectura y diseño WEB (2023)         Alumno: Marcelo A. Di Deo
+      Materia: Arquitectura y diseño WEB (2023) Alumno: Marcelo A. Di Deo
     </span>
   </footer>
 </div>
