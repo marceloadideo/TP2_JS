@@ -102,7 +102,7 @@
 
       <div class="col-md-4">
         <label for="Contrasena" class="form-label">Contraseña</label>
-        <input type="text" class="form-control" id="contrasena" placeholder="Contraseña">
+        <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
         <span id="errorContrasena" style="color: red;"></span>
         <div class="valid-feedback">
           <span id="errorContrasena" style="color: red;"></span>
@@ -110,11 +110,11 @@
       </div>
 
       <div class="col-md-4">
-        <label for="Contrasena" class="form-label">Repetir Contraseña</label>
-        <input type="text" class="form-control" id="contrasena" placeholder="Repetir Contraseña">
-        <span id="errorContrasena" style="color: red;"></span>
+        <label for="RepetirContrasena" class="form-label">Repetir Contraseña</label>
+        <input type="password" class="form-control" id="repetircontrasena" placeholder="Repetir Contraseña">
+        <span id="errorRepetirContrasena" style="color: red;"></span>
         <div class="valid-feedback">
-          <span id="errorContrasena" style="color: red;"></span>
+          <span id="errorRepetirContrasena" style="color: red;"></span>
         </div>
       </div>
 
@@ -143,17 +143,24 @@
     const apellidoYNombre = document.getElementById('apellidoYNombre');
     const errorApellidoYNombre = document.getElementById('errorApellidoYNombre');
 
+    const dni = document.getElementById('dni');
+    const errorDni = document.getElementById('errorDni');
+
+    const edad = document.getElementById('edad');
+    const errorEdad = document.getElementById('errorEdad');
+
+
     const contrasena = document.getElementById('contrasena');
     const errorContrasena = document.getElementById('errorContrasena');
 
-    const apellido = document.getElementById('apellido');
-    const errorApellido = document.getElementById('errorApellido');
+    const repetirContrasena = document.getElementById('repetircontrasena');
+    const errorRepetirContrasena = document.getElementById('errorRepetirContrasena');
+
+
 
     const email = document.getElementById('email');
     const errorEmail = document.getElementById('errorEmail');
 
-    const dni = document.getElementById('dni');
-    const errorDni = document.getElementById('errorDni');
 
 
     // Función de validación para el campo 1
@@ -190,6 +197,19 @@
 
     } //validarContrasena
 
+    function validarEdad() {
+
+      nValor = parseInt(edad.value);
+
+      if (nValor > 110 || nValor < 18) {
+        errorEdad.textContent = 'Edad incorrecta';
+      } else {
+        errorEdad.textContent = '';
+      }
+
+    } //validaredad
+
+
     function validarContrasena() {
 
       const valor = contrasena.value;
@@ -206,18 +226,24 @@
       }
     } //validarContrasena
 
+    function validarRepetirContrasena() {
 
-
-    // Función de validación para el campo 2
-    function validarApellido() {
-      const valor = apellido.value;
+      const valor = repetircontrasena.value;
 
       if (valor.length < 3) {
-        errorApellido.textContent = 'El Apellido debe tener al menos 3 caracteres';
+        errorRepetirContrasena.textContent = 'La Contraseña debe tener mas de 3 caracteres';
       } else {
-        errorApellido.textContent = '';
+        errorRepetirContrasena.textContent = '';
       }
-    }
+      if (valor.includes('@')) {
+        errorRepetirContrasena.textContent = '';
+      } else {
+        errorRepetirContrasena.textContent = 'Falta la arroba';
+      }
+    } //validarContrasena
+
+
+
 
     // Función de validación para el campo 3
     function validarEmail() {
@@ -231,29 +257,37 @@
       }
     } //validarEmail
 
-    function ocultarErrorNombre() {
+    function ocultarErrorApellidoYNombre() {
       errorApellidoYNombre.textContent = '';
     }
-    function ocultarErrorApellido() {
-      errorApellido.textContent = '';
-    }
-    
+
     function ocultarErrorDni() {
       errorDni.textContent = '';
     }
-    
-    
+
+    function ocultarErrorEdad() {
+      errorEdad.textContent = '';
+    }
+
     function ocultarErrorEmail() {
       errorEmail.textContent = '';
     }
     function ocultarErrorContrasena() {
       errorContrasena.textContent = '';
     }
+    function ocultarErrorRepetirContrasena() {
+      errorRepetirContrasena.textContent = '';
+    }
 
     apellidoYNombre.addEventListener('blur', validarApellidoYNombre);
-    apellidoYNombre.addEventListener('focus', ocultarErrorNombre);
+    apellidoYNombre.addEventListener('focus', ocultarErrorApellidoYNombre);
 
-    
+    dni.addEventListener('blur', validarDni);
+    dni.addEventListener('focus', ocultarErrorDni);
+
+    edad.addEventListener('blur', validarEdad);
+    edad.addEventListener('focus', ocultarErrorEdad);
+
 
     email.addEventListener('blur', validarEmail);
     email.addEventListener('focus', ocultarErrorEmail);
@@ -261,8 +295,9 @@
     contrasena.addEventListener('blur', validarContrasena);
     contrasena.addEventListener('focus', ocultarErrorContrasena);
 
-    dni.addEventListener('blur', validarDni);
-    dni.addEventListener('focus', ocultarErrorDni);
+    repetirContrasena.addEventListener('blur', validarRepetirContrasena);
+    repetirContrasena.addEventListener('focus', ocultarErrorRepetirContrasena);
+
 
 
   </script>
