@@ -8,6 +8,21 @@
   <title>TP 2 JS</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script>
+    function PromptDemo() {
+      //Ingresamos una pregunta
+      var sCiudad = document.getElementById('ciudad').value; 
+      //Verificamos si el usuario ingreso un valor
+      if (sCiudad != null) {
+        alert("Tu ciudad es " + sCiudad);
+      }
+      //Verificamos si el usuario NO ingreso un valor
+      else {
+        alert("Falta ingresar Ciudad");
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -133,7 +148,8 @@
       </div>
 
       <div class="col-12">
-        <button class="btn btn-primary" type="submit">Enviar formulario</button>
+        <input type="button" onclick="PromptDemo();" value="Verificar"/>
+        <!-- <button class="btn btn-primary" type="submit">Enviar formulario</button> -->
       </div>
 
     </form>
@@ -244,10 +260,17 @@
 
 
     function validarEdad() {
+      valor = edad.value;
+
+      if (valor.length < 2) {
+        errorEdad.textContent = 'Edad vacia no es un valor admitido';
+      } else {
+        errorEdad.textContent = '';
+      }
 
       nValor = parseInt(edad.value);
 
-      if (nValor > 110 || nValor < 18) {
+      if (nValor > 110 || nValor < 18 || nValor === NaN) {
         errorEdad.textContent = 'Edad incorrecta';
       } else {
         errorEdad.textContent = '';
